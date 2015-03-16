@@ -1,0 +1,7 @@
+<h2>{{repodetails.name}}</h2>
+<span>Total Contributors: {{repodetails.repocontributors.length}} Open Issues: {{repodetails.open_issues_count}}</span>
+<ul>
+  <li ng-repeat="contributor in repodetails.repocontributors | orderBy:contributorsSortOrder">
+    <img src="{{contributor.avatar_url}}" title="{{contributor.login}}" />{{contributor.login}}
+  </li>
+</ul>

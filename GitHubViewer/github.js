@@ -16,13 +16,29 @@
         });
     };
 
+    var getRepoInfo = function(username, reponame) {
+      return $http.get("https://api.github.com/repos/" + username + "/" + reponame)
+        .then(function(response) {
+          return response.data;
+        });
+    };
+
+    var getContributors = function(username, reponame) {
+      return $http.get("https://api.github.com/repos/" + username + "/" + reponame + "/contributors")
+        .then(function(response) {
+          return response.data;
+        });
+    };
+
     return {
       getUser: getUser,
-      getRepos: getRepos
+      getRepos: getRepos,
+      getRepoInfo: getRepoInfo,
+      getContributors: getContributors
     }
   };
 
   var module = angular.module("githubViewer");
   module.factory("github", github);
-  
+
 }());
